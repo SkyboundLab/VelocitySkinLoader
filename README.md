@@ -38,9 +38,8 @@ A light-weight plugin load your custom skin for Velocity.
       "priority": 100
     },
     {
-      "type": "Official",
-      "apiUrl": "https://custom-api.example.com",
-      "sessionUrl": "https://custom-session.example.com",
+      "type": "BlessingSkin",
+      "url": "https://littlesk.in/",
       "priority": 99
     },
     {
