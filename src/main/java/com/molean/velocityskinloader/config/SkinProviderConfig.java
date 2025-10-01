@@ -11,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 public class SkinProviderConfig implements Comparable<SkinProviderConfig> {
     private String type;
     private String url;
+    private String apiUrl;
+    private String sessionUrl;
     private int priority = 0;
 
     @Override
@@ -21,7 +23,7 @@ public class SkinProviderConfig implements Comparable<SkinProviderConfig> {
     public SkinProvider toSkinProvider() {
         switch (type) {
             case "Official" -> {
-                return OfficialSkinProvider.instance();
+                return OfficialSkinProvider.of(this);
             }
             case "BlessingSkin" -> {
                 return BlessingSkinProvider.of(this);
