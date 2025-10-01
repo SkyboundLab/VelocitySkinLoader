@@ -18,13 +18,13 @@ public class MojangClient extends ApiClient {
     }
 
     public UUIDProfile getUUIDByName(String name) throws Exception {
-        HttpResponse<String> response = get("drasl.twint.my.id/account/users/profiles/minecraft/" + name);
+        HttpResponse<String> response = get("api.mojang.com/account/users/profiles/minecraft/" + name);
         String body = response.body();
         return gson.fromJson(body, UUIDProfile.class);
     }
 
     public MojangSkin getSkinByUUIDProfile(UUIDProfile uuidProfile) throws Exception {
-        HttpResponse<String> response = get("drasl.twint.my.id/session/minecraft/profile/" + uuidProfile.getId());
+        HttpResponse<String> response = get("sessionserver.mojang.com/session/minecraft/profile/" + uuidProfile.getId());
         String body = response.body();
         return gson.fromJson(body, MojangSkin.class);
     }

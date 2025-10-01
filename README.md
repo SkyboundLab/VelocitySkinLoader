@@ -43,6 +43,11 @@ A light-weight plugin load your custom skin for Velocity.
       "priority": 99
     },
     {
+      "type": "ElyBy",
+      "url": "http://skinsystem.ely.by",
+      "priority": 50
+    },
+    {
       "type": "Official",
       "priority": 0
     }

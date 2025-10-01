@@ -2,6 +2,7 @@ package com.molean.velocityskinloader.config;
 
 import com.molean.velocityskinloader.exception.NoSuchSkinProviderException;
 import com.molean.velocityskinloader.provider.BlessingSkinProvider;
+import com.molean.velocityskinloader.provider.ElyByProvider;
 import com.molean.velocityskinloader.provider.OfficialSkinProvider;
 import com.molean.velocityskinloader.provider.SkinProvider;
 import lombok.Data;
@@ -11,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 public class SkinProviderConfig implements Comparable<SkinProviderConfig> {
     private String type;
     private String url;
+    private String apiUrl;
+    private String sessionUrl;
     private int priority = 0;
 
     @Override
@@ -21,10 +24,13 @@ public class SkinProviderConfig implements Comparable<SkinProviderConfig> {
     public SkinProvider toSkinProvider() {
         switch (type) {
             case "Official" -> {
-                return OfficialSkinProvider.instance();
+                return OfficialSkinProvider.of(this);
             }
             case "BlessingSkin" -> {
                 return BlessingSkinProvider.of(this);
+            }
+            case "ElyBy" -> {
+                return ElyByProvider.of(this);
             }
             default -> throw new NoSuchSkinProviderException(type);
         }
