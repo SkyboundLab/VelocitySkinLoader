@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MojangClient extends ApiClient {
 
-    private static final MojangClient instance = new MojangClient("https://api.mojang.com", "https://sessionserver.mojang.com");
+    private static final MojangClient instance = new MojangClient("api.mojang.com", "sessionserver.mojang.com");
     private static Map<String, MojangClient> clientMap = new ConcurrentHashMap<>();
 
     public static MojangClient instance() {
