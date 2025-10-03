@@ -38,6 +38,7 @@ public class SkySkinsProvider implements SkinProvider {
 
     @Override
     public GameProfile.Property getProperty(String uuid) {
+        System.out.println("SkySkinsProvider.getProperty called with: " + uuid);
         try {
             MojangSkin signedTextures = skySkinsClient.getSignedTextures(uuid);
             List<GameProfile.Property> properties = signedTextures.getProperties();
@@ -51,6 +52,7 @@ public class SkySkinsProvider implements SkinProvider {
             
             return properties.size() > 0 ? properties.get(0) : null;
         } catch (Exception e) {
+            System.out.println("SkySkinsProvider error: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }

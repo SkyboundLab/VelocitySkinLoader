@@ -64,10 +64,14 @@ public class SkinApply {
 
     public void loadSkinOnline(Player player) {
         String username = player.getUsername();
+        String uuid = player.getUniqueId().toString();
         for (SkinProviderConfig skinProviderConfig : config.getSkinProviderList()) {
             try {
                 SkinProvider skinProvider = skinProviderConfig.toSkinProvider();
-                GameProfile.Property property = skinProvider.getProperty(username);
+                // Use UUID for SkySkins provider, username for others
+                String identifier = skinProviderConfig.getType().equals("SkySkins") ? uuid : username;
+                System.out.println("Trying provider: " + skinProviderConfig.getType() + " with identifier: " + identifier);
+                GameProfile.Property property = skinProvider.getProperty(identifier);
                 if (property != null) {
                     player.setGameProfileProperties(List.of(property));
                     logger.info(username + " loaded skin from " + skinProvider.getDisplay());
