@@ -24,6 +24,7 @@ public class SkySkinsClient extends ApiClient {
     }
 
     public MojangSkin getSignedTextures(String uuid) throws Exception {
+        System.out.println("SkySkins - Fetching skin for UUID: " + uuid);
         HttpResponse<String> response = get("/textures/signed/" + uuid);
         String body = response.body();
         return gson.fromJson(body, MojangSkin.class);
