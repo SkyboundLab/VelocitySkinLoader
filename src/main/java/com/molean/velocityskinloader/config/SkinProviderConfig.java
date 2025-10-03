@@ -4,6 +4,7 @@ import com.molean.velocityskinloader.exception.NoSuchSkinProviderException;
 import com.molean.velocityskinloader.provider.BlessingSkinProvider;
 import com.molean.velocityskinloader.provider.ElyByProvider;
 import com.molean.velocityskinloader.provider.OfficialSkinProvider;
+import com.molean.velocityskinloader.provider.SkySkinsProvider;
 import com.molean.velocityskinloader.provider.SkinProvider;
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +32,9 @@ public class SkinProviderConfig implements Comparable<SkinProviderConfig> {
             }
             case "ElyBy" -> {
                 return ElyByProvider.of(this);
+            }
+            case "SkySkins" -> {
+                return SkySkinsProvider.of(this);
             }
             default -> throw new NoSuchSkinProviderException(type);
         }
